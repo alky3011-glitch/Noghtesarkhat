@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0c">
+<title>نقطه سرخط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;900&display=swap">
+<style>
+:root{--bg:#0b0b0c;--sf:#161618;--line:#2b2b30;--ink:#f2f0ed;--mute:#9b9ba3;--red:#e63946;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:70px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9}
+a{color:inherit}:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:4;background:rgba(11,11,12,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;min-height:60px;gap:12px}
+header b{font-weight:900}header nav{display:flex;gap:18px;flex-wrap:wrap}header nav a{text-decoration:none;color:var(--mute);font-weight:600}header nav a:hover{color:var(--ink)}
+.hero{min-height:70vh;display:flex;align-items:flex-end;background:radial-gradient(circle at 80% 20%,#3a0d12 0,transparent 55%),var(--bg) center/cover;position:relative}
+.hero .wrap{padding-bottom:56px;padding-top:100px;width:100%}.hero h1{margin:0;font-weight:900;font-size:clamp(48px,12vw,132px);line-height:1.12;overflow-wrap:anywhere}
+.bar{display:block;width:min(260px,50%);height:10px;background:var(--red);margin:14px 0 22px}.hero p{font-size:1.15rem;color:#d6d4d0;max-width:34ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:10px 22px;border-radius:6px;border:0;font:inherit;font-weight:900;text-decoration:none;cursor:pointer}.btn:hover{background:#ff4d5a}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line);padding:6px 14px;font-weight:600}.btn.alt:hover{border-color:var(--red)}
+section{padding:50px 0}h2{font-size:1.45rem;font-weight:900;margin:0 0 24px;padding-inline-start:14px;border-inline-start:6px solid var(--red)}
+.feat{display:grid;grid-template-columns:2fr 1fr;gap:0;background:var(--sf);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;margin-bottom:22px}
+@media(max-width:700px){.feat{grid-template-columns:1fr}header .wrap{align-items:flex-start;padding-top:10px;padding-bottom:10px}header nav{gap:10px;font-size:.9rem}}
+.feat .t{padding:26px;display:flex;flex-direction:column;justify-content:center;gap:8px}.feat small{color:var(--red);font-weight:900}.feat strong{font-size:1.5rem;line-height:1.5}
+.th{aspect-ratio:16/9;background:linear-gradient(135deg,#2a0f13,#1b1b1e) center/cover;display:grid;place-items:center}.th i{width:56px;height:56px;border-radius:50%;background:var(--red);position:relative}.th i:after{content:"";position:absolute;inset:0;margin:auto;width:0;height:0;border-block:9px solid transparent;border-inline-end:15px solid #fff;transform:translateX(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}.v{background:var(--sf);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;display:block}.v:hover{border-color:var(--red)}.v b{display:block;padding:12px 16px}
+.about{display:grid;grid-template-columns:1fr 2fr;gap:30px}.about p{margin:0;font-size:1.1rem;color:#d6d4d0;white-space:pre-line;max-width:60ch}
+@media(max-width:700px){.about{grid-template-columns:1fr}}
+.links a{display:flex;justify-content:space-between;padding:16px 4px;border-top:1px solid var(--line);text-decoration:none;font-weight:600;font-size:1.1rem}.links a:last-child{border-bottom:1px solid var(--line)}.links a:hover{color:var(--red)}
+footer{padding:30px 0 70px;color:var(--mute);font-size:.9rem}
+#adminOpen{position:fixed;inset-inline-start:14px;bottom:14px;z-index:6;box-shadow:0 5px 24px #0008}
+#panel{position:fixed;inset:0;z-index:10;background:var(--bg);overflow:auto;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(30px + env(safe-area-inset-bottom,0px))}
+#panel .in{max-width:680px;margin:0 auto;display:grid;gap:10px}#panel label{font-weight:600;font-size:.95rem;color:var(--mute)}
+#panel input[type=text],#panel input[type=email],#panel input[type=password],#panel textarea{width:100%;font:inherit;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--sf);color:var(--ink)}
+.item{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--sf)}.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tb img{width:84px;height:52px;object-fit:cover;border-radius:6px;border:1px solid var(--line)}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}#msg{color:var(--red);min-height:1.6em;font-weight:600}.hint{color:var(--mute);font-size:.88rem} [hidden]{display:none!important}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header><div class="wrap"><b id="hn">نقطه سرخط</b><nav><a href="#videos">ویدیوها</a><a href="#about">درباره</a><a href="#links">ارتباط</a></nav></div></header>
+<div id="app"></div>
+<button class="btn" id="adminOpen" type="button">مدیریت سایت</button>
+<div id="panel" hidden></div>
+<script>
+/*
+  راه‌اندازی: مقادیر SUPABASE_URL و SUPABASE_ANON_KEY را در این فایل جایگزین کنید.
+  کلید service_role را هرگز در این فایل قرار ندهید.
+*/
+const SUPABASE_URL = "PASTE_SUPABASE_PROJECT_URL_HERE";
+const SUPABASE_ANON_KEY = "PASTE_SUPABASE_ANON_KEY_HERE";
+const BUCKET = "site-images";
+const DEFAULT_DATA = {
+  name:"نقطه سرخط",
+  tagline:"به کانال خوش اومدی. ویدیوهای تازه رو از اینجا ببین.",
+  channel:"https://www.youtube.com/@noghte.sarekhat",
+  hero:"",
+  about:"اینجا درباره کانالت می‌نویسی: موضوع ویدیوها، هر چند وقت یه بار ویدیو میاد و چرا باید دنبالش کنی.",
+  videos:[
+    {title:"عنوان ویدیوی اول",url:"https://www.youtube.com/@noghte.sarekhat",img:""},
+    {title:"عنوان ویدیوی دوم",url:"https://www.youtube.com/@noghte.sarekhat",img:""},
+    {title:"عنوان ویدیوی سوم",url:"https://www.youtube.com/@noghte.sarekhat",img:""}
+  ],
+  links:[{label:"یوتیوب",url:"https://www.youtube.com/@noghte.sarekhat"}]
+};
+const $=s=>document.querySelector(s);
+const isConfigured=()=>window.supabase && SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("PASTE_") && !SUPABASE_ANON_KEY.includes("PASTE_");
+const sb=isConfigured()?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+let D=structuredClone(DEFAULT_DATA), session=null, editData=null;
+const safeUrl=u=>/^https?:\/\//i.test(u||"")?u:"#";
+function el(tag,attrs={},...kids){const n=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(k==="text")n.textContent=v;else if(k==="class")n.className=v;else n.setAttribute(k,v)}kids.flat().forEach(c=>{if(c instanceof Node)n.append(c);else if(c!==null&&c!==undefined)n.append(document.createTextNode(String(c)))});return n}
+function setBg(node,url,shade=false){if(url){node.style.backgroundImage=(shade?'linear-gradient(180deg,rgba(11,11,12,.25),rgba(11,11,12,.88)),':'')+'url("'+String(url).replace(/["\\]/g,'')+'")'}return node}
+function thumb(v){const d=el("div",{class:"th"});if(v.img)d.style.backgroundImage=`url("${String(v.img).replace(/["\\]/g,"")}")`;else d.append(el("i"));return d}
+function render(){
+ const app=$("#app");app.replaceChildren();$("#hn").textContent=D.name||"نقطه سرخط";
+ const vids=Array.isArray(D.videos)?D.videos:[], links=Array.isArray(D.links)?D.links:[];
+ const hero=setBg(el("div",{class:"hero"},el("div",{class:"wrap"},
+   el("h1",{text:D.name||""}),el("i",{class:"bar"}),el("p",{text:D.tagline||""}),
+   el("a",{class:"btn",href:safeUrl(D.channel),target:"_blank",rel:"noopener",text:"اشتراک در یوتیوب"})
+ )),D.hero,true);
+ const sections=el("div",{class:"wrap"});
+ const videoSection=el("section",{id:"videos"},el("h2",{text:"ویدیوها"}));
+ if(vids.length){const f=vids[0],a=el("a",{class:"feat",href:safeUrl(f.url),target:"_blank",rel:"noopener"},thumb(f),el("div",{class:"t"},el("small",{text:"تازه‌ترین"}),el("strong",{text:f.title||""})));videoSection.append(a)}
+ const grid=el("div",{class:"grid"});
+ vids.slice(1).forEach(v=>grid.append(el("a",{class:"v",href:safeUrl(v.url),target:"_blank",rel:"noopener"},thumb(v),el("b",{text:v.title||""}))));
+ videoSection.append(grid);
+ sections.append(videoSection,el("section",{id:"about"},el("div",{class:"about"},el("h2",{text:"درباره کانال"}),el("p",{text:D.about||""}))));
+ const linkBox=el("div",{class:"links"});links.forEach(l=>linkBox.append(el("a",{href:safeUrl(l.url),target:"_blank",rel:"noopener"},el("span",{text:l.label||""}),el("span",{text:"←"}))));
+ sections.append(el("section",{id:"links"},el("h2",{text:"ما رو دنبال کن"}),linkBox),el("footer",{text:"© "+(D.name||"نقطه سرخط")}));
+ app.append(hero,sections);document.title=D.name||"نقطه سرخط";
+}
+async function loadData(){
+ if(!sb){render();return}
+ try{const {data,error}=await sb.from("site_content").select("content").eq("id",1).maybeSingle();if(error)throw error;if(data?.content)D=mergeDefaults(data.content);render()}
+ catch(e){console.error(e);render();showNotice("اتصال به پایگاه داده کامل نشده؛ سایت با محتوای پیش‌فرض نمایش داده می‌شود.")}
+}
+function mergeDefaults(x){return {...structuredClone(DEFAULT_DATA),...x,videos:Array.isArray(x.videos)?x.videos:[],links:Array.isArray(x.links)?x.links:[]}}
+function showNotice(message){const n=el("div",{style:"position:fixed;bottom:72px;left:12px;right:12px;z-index:20;background:#252529;border:1px solid #45454b;padding:12px;border-radius:8px",text:message});document.body.append(n);setTimeout(()=>n.remove(),6000)}
+function field(value,on,placeholder="",ltr=false){const i=el("input",{type:"text",placeholder});if(ltr)i.dir="ltr";i.value=value||"";i.addEventListener("input",()=>on(i.value));return i}
+function imagePicker(label,get,set){
+ const box=el("div",{class:"tb"});if(get())box.append(el("img",{src:get(),alt:"پیش‌نمایش"}));
+ const input=el("input",{type:"file",accept:"image/jpeg,image/png,image/webp"});input.hidden=true;
+ const b=el("button",{class:"btn alt",type:"button",text:get()?"تغییر "+label:"انتخاب "+label});b.onclick=()=>input.click();
+ input.onchange=async()=>{const file=input.files?.[0];if(!file)return;if(file.size>5*1024*1024){showNotice("حجم عکس باید کمتر از ۵ مگابایت باشد.");return}
+   if(!sb||!session){showNotice("برای بارگذاری عکس ابتدا اتصال Supabase را کامل و وارد پنل شوید.");return}
+   b.disabled=true;b.textContent="در حال بارگذاری...";
+   try{const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");const path=`${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+     const {error}=await sb.storage.from(BUCKET).upload(path,file,{upsert:false,contentType:file.type});if(error)throw error;
+     const {data}=sb.storage.from(BUCKET).getPublicUrl(path);set(data.publicUrl);buildPanel()
+   }catch(e){console.error(e);showNotice("بارگذاری عکس ناموفق بود. تنظیمات Storage را بررسی کن.")}
+   finally{b.disabled=false}
+ };
+ box.append(b,input);
+ if(get()){const rm=el("button",{class:"btn alt",type:"button",text:"حذف عکس"});rm.onclick=()=>{set("");buildPanel()};box.append(rm)}
+ return box
+}
+function openPanel(){if(!sb){$("#panel").hidden=false;$("#panel").replaceChildren(el("div",{class:"in"},el("h2",{text:"راه‌اندازی پنل مدیریت"}),el("p",{text:"برای فعال شدن پنل، ابتدا آدرس پروژه و کلید عمومی Supabase را در ابتدای فایل وارد کن و SQL راهنما را اجرا کن."}),el("p",{class:"hint",text:"کلید service_role را هرگز در HTML قرار نده."}),el("button",{class:"btn alt",type:"button",text:"بستن"})));$("#panel button").onclick=()=>$("#panel").hidden=true;return}
+ $("#panel").hidden=false;session=null;renderLogin()}
+function renderLogin(){
+ const p=$("#panel");p.replaceChildren();const email=el("input",{type:"email",placeholder:"ایمیل مدیر",autocomplete:"username",dir:"ltr"}),pass=el("input",{type:"password",placeholder:"رمز عبور",autocomplete:"current-password",dir:"ltr"}),msg=el("div",{id:"msg"}),login=el("button",{class:"btn",type:"button",text:"ورود به پنل"}),close=el("button",{class:"btn alt",type:"button",text:"بستن"});
+ login.onclick=async()=>{msg.textContent="در حال ورود...";login.disabled=true;try{const {data,error}=await sb.auth.signInWithPassword({email:email.value.trim(),password:pass.value});if(error)throw error;session=data.session;renderEditor()}catch(e){msg.textContent="ورود انجام نشد؛ ایمیل و رمز یا تنظیمات احراز هویت را بررسی کن."}finally{login.disabled=false}};
+ close.onclick=()=>p.hidden=true;
+ p.append(el("div",{class:"in"},el("h2",{text:"ورود مدیر سایت"}),el("p",{class:"hint",text:"این بخش فقط برای مدیر سایت است."}),el("label",{text:"ایمیل"}),email,el("label",{text:"رمز عبور"}),pass,msg,el("div",{class:"row"},login,close)));
+}
+function renderEditor(){if(!session){renderLogin();return}editData=structuredClone(D);buildPanel()}
+function buildPanel(){
+ const p=$("#panel"),y=p.scrollTop;p.replaceChildren();
+ const W=structuredClone(D),msg=el("div",{id:"msg"});
+ const videos=W.videos.map((v,i)=>{const it=el("div",{class:"item"},field(v.title,x=>v.title=x,"عنوان ویدیو"),field(v.url,x=>v.url=x,"لینک ویدیو",true),imagePicker("کاور",()=>v.img,x=>v.img=x));const del=el("button",{class:"btn alt",type:"button",text:"حذف ویدیو"});del.onclick=()=>{W.videos.splice(i,1);editData=W;buildPanel()};it.append(del);return it});
+ const links=W.links.map((l,i)=>{const it=el("div",{class:"item"},field(l.label,x=>l.label=x,"اسم لینک"),field(l.url,x=>l.url=x,"آدرس لینک",true));const del=el("button",{class:"btn alt",type:"button",text:"حذف لینک"});del.onclick=()=>{W.links.splice(i,1);editData=W;buildPanel()};it.append(del);return it});
+ const about=el("textarea",{rows:"5"});about.value=W.about||"";about.oninput=()=>W.about=about.value;
+ const addV=el("button",{class:"btn alt",type:"button",text:"+ افزودن ویدیو"});addV.onclick=()=>{W.videos.push({title:"",url:"",img:""});editData=W;buildPanel()};
+ const addL=el("button",{class:"btn alt",type:"button",text:"+ افزودن لینک"});addL.onclick=()=>{W.links.push({label:"",url:""});editData=W;buildPanel()};
+ const name=field(W.name,x=>W.name=x,"نام کانال"),tag=field(W.tagline,x=>W.tagline=x,"جمله زیر عنوان"),channel=field(W.channel,x=>W.channel=x,"لینک یوتیوب",true);
+ const hero=imagePicker("پس‌زمینه",()=>W.hero,x=>W.hero=x);
+ const save=el("button",{class:"btn",type:"button",text:"ذخیره تغییرات"}),logout=el("button",{class:"btn alt",type:"button",text:"خروج از حساب"}),close=el("button",{class:"btn alt",type:"button",text:"بستن پنل"});
+ save.onclick=async()=>{save.disabled=true;msg.textContent="در حال ذخیره...";
+   try{W.name=(W.name||"نقطه سرخط").trim();W.videos=W.videos.filter(v=>v.title?.trim());W.links=W.links.filter(l=>l.label?.trim());
+     const {error}=await sb.from("site_content").upsert({id:1,content:W,updated_at:new Date().toISOString()},{onConflict:"id"});if(error)throw error;
+     D=structuredClone(W);editData=structuredClone(D);render();msg.textContent="تغییرات ذخیره شد.";showNotice("تغییرات سایت ذخیره شد.")
+   }catch(e){console.error(e);msg.textContent="ذخیره نشد؛ سیاست‌های دسترسی و تنظیمات Supabase را بررسی کن."}
+   finally{save.disabled=false}
+ };
+ logout.onclick=async()=>{await sb.auth.signOut();session=null;renderLogin()};
+ close.onclick=()=>p.hidden=true;
+ p.append(el("div",{class:"in"},el("h2",{text:"مدیریت نقطه سرخط"}),el("p",{class:"hint",text:"تغییرات را انجام بده و در پایان «ذخیره تغییرات» را بزن."}),
+  el("label",{text:"نام کانال"}),name,el("label",{text:"جمله زیر عنوان"}),tag,el("label",{text:"لینک کانال یوتیوب"}),channel,
+  el("label",{text:"عکس پس‌زمینه بالای صفحه"}),hero,el("label",{text:"درباره کانال"}),about,
+  el("label",{text:"ویدیوها (اولی بزرگ نمایش داده می‌شود)"}),...videos,addV,
+  el("label",{text:"لینک‌های شبکه‌های اجتماعی"}),...links,addL,msg,el("div",{class:"row"},save,logout,close)));
+ p.scrollTop=y;
+}
+$("#adminOpen").addEventListener("click",openPanel);
+render();
+loadData();
+</script>
+</body>
+</html>
